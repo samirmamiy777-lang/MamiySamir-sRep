@@ -30,13 +30,26 @@
           </span>
         </a>
 
+        <button
+          type="button"
+          class="mobile-menu-toggle"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Открыть меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         <nav class="nav">
           <a href="./index.html#products">Продукция</a>
           <a href="./index.html#advantages">Преимущества</a>
         </nav>
 
         <div class="topbar-actions">
-          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+          <button type="button" class="theme-toggle" data-theme-toggle aria-label="Переключить тему">
             <span class="theme-toggle-track">
               <span class="theme-toggle-label theme-toggle-light">Светлая</span>
               <span class="theme-toggle-label theme-toggle-dark">Тёмная</span>
@@ -45,6 +58,17 @@
           </button>
           <a href="./index.html" class="button button-secondary">Назад</a>
           <a href="tel:+79628708218" class="button button-primary">Позвонить</a>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+          <a href="mailto:info@wintersmazki.ru" class="button button-ghost button-block">info@wintersmazki.ru</a>
+          <button type="button" class="theme-toggle theme-toggle-mobile" data-theme-toggle aria-label="Переключить тему">
+            <span class="theme-toggle-track">
+              <span class="theme-toggle-label theme-toggle-light">Светлая</span>
+              <span class="theme-toggle-label theme-toggle-dark">Тёмная</span>
+              <span class="theme-toggle-thumb"></span>
+            </span>
+          </button>
         </div>
       </header>
 
@@ -60,7 +84,7 @@
 
         <section class="contacts-grid">
           <article class="contact-card reveal">
-            <h3>Телефон</h3>
+            <h3>Телефон / Мессенджеры </h3>
             <p>Для консультации, подбора масел и обсуждения поставки.</p>
             <div class="contact-actions">
               <a href="tel:+79628708218" class="button button-primary">Позвонить сейчас</a>
@@ -73,7 +97,7 @@
             <h3>Почта</h3>
             <p>Если удобнее отправить запрос списком или прикрепить техническое задание.</p>
             <div class="contact-actions">
-              <a href="mailto:info@masla-smazki.ru" class="button button-secondary">info@masla-smazki.ru</a>
+              <a href="mailto:info@wintersmazki.ru" class="button button-secondary">info@wintersmazki.ru</a>
             </div>
           </article>
         </section>
@@ -83,7 +107,7 @@
             <h3>Основные данные</h3>
             <p>Компания: Масла и Смазки</p>
             <p>Телефон: +7 962 870-82-18</p>
-            <p>Email: info@masla-smazki.ru</p>
+            <p>Email: info@wintersmazki.ru</p>
             <p>Регион работы: Москва и поставки по России</p>
           </div>
 
@@ -106,7 +130,7 @@
         </div>
         <div>
           <a href="tel:+79628708218">+7 962 870-82-18</a>
-          <a href="mailto:info@masla-smazki.ru">info@masla-smazki.ru</a>
+          <a href="mailto:info@wintersmazki.ru">info@wintersmazki.ru</a>
           <span>Юр. адрес: 000000, г. Москва, ул. Примерная, д. 1, офис 1</span>
         </div>
         <div>

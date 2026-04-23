@@ -243,6 +243,64 @@ body.dark-theme .topbar.is-scrolled {
   gap: 16px;
 }
 
+.mobile-menu-toggle,
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu-toggle {
+  border: 1px solid var(--line);
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.56);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mobile-menu-toggle span {
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.mobile-menu-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+body.dark-theme .mobile-menu-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
 .nav a {
   color: var(--muted);
   font-weight: 500;
@@ -769,7 +827,7 @@ body.dark-theme .product-card {
 
 .bullet-list li {
   position: relative;
-  padding-left: 24px;
+  padding-left: 18px;
   line-height: 1.72;
 }
 
@@ -997,24 +1055,84 @@ body.dark-theme .footer p {
   .topbar {
     top: 0;
     padding: 14px;
+    align-items: flex-start;
     flex-wrap: wrap;
+  }
+
+  .brand {
+    max-width: calc(100% - 68px);
+  }
+
+  .brand strong {
+    font-size: 1.14rem;
+  }
+
+  .brand small {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 
   .topbar-actions {
-    width: 100%;
-    justify-content: stretch;
-    flex-wrap: wrap;
+    display: none;
   }
 
-  .topbar-actions .button,
-  .topbar-actions .theme-toggle {
-    flex: 1;
+  .mobile-menu-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .mobile-menu {
+    width: 100%;
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(238, 242, 246, 0.92));
+    border: 1px solid rgba(25, 37, 51, 0.08);
+    box-shadow: var(--shadow-soft);
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .mobile-menu.is-open {
+    display: grid;
+  }
+
+  .theme-toggle-mobile,
+  .theme-toggle-mobile .theme-toggle-track {
+    width: 100%;
+  }
+
+  body.dark-theme .mobile-menu {
+    background: linear-gradient(180deg, rgba(23, 28, 34, 0.94), rgba(17, 21, 27, 0.92));
+    border-color: rgba(255, 255, 255, 0.08);
   }
 
   .hero {
     padding-top: 32px;
     min-height: auto;
     gap: 30px;
+  }
+
+  .hero-copy,
+  .contacts-hero,
+  .section-heading,
+  .why-copy {
+    text-align: center;
+    justify-items: center;
+    margin-inline: auto;
+  }
+
+  .hero h1,
+  .contacts-hero h1,
+  .section-heading h2,
+  .why-copy h2,
+  .eyebrow,
+  .hero-text,
+  .contacts-hero p,
+  .section-heading p:last-child {
+    text-align: center;
+    margin-inline: auto;
   }
 
   .hero-metrics,
@@ -1047,7 +1165,13 @@ body.dark-theme .footer p {
   }
 
   .liquid-showcase {
-    aspect-ratio: 1 / 1.15;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 620px;
+    aspect-ratio: auto;
+    padding: 18px;
   }
 
   .liquid-drop {
@@ -1055,24 +1179,39 @@ body.dark-theme .footer p {
     height: 174px;
   }
 
+  .liquid-core {
+    inset: 118px 0 118px;
+  }
+
   .showcase-note {
-    width: calc(100% - 36px);
+    position: relative;
+    z-index: 1;
+    width: 100%;
   }
 
   .note-top {
-    top: 18px;
-    left: 18px;
+    top: auto;
+    left: auto;
     right: auto;
   }
 
   .note-bottom {
-    left: 18px;
-    bottom: 18px;
+    left: auto;
+    bottom: auto;
+    margin-top: -56px;
   }
 
   .hero-actions,
   .contact-actions {
     flex-direction: column;
+  }
+
+  .bullet-list li {
+    padding-left: 0;
+  }
+
+  .bullet-list li::before {
+    display: none;
   }
 }
 

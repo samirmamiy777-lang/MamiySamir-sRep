@@ -1,7 +1,9 @@
 const revealElements = document.querySelectorAll(".reveal");
 const parallaxLayers = document.querySelectorAll(".parallax-layer");
 const topbar = document.querySelector("#topbar");
-const themeToggle = document.querySelector("#theme-toggle");
+const themeToggles = document.querySelectorAll("[data-theme-toggle]");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const mobileMenu = document.querySelector("[data-mobile-menu]");
 const themeStorageKey = "winter-theme";
 
 const revealObserver = new IntersectionObserver(
@@ -30,6 +32,13 @@ const updateTopbarState = () => {
 };
 
 const handleParallax = () => {
+  if (window.innerWidth <= 760) {
+    parallaxLayers.forEach((layer) => {
+      layer.style.transform = "";
+    });
+    return;
+  }
+
   const viewportOffset = window.scrollY;
 
   parallaxLayers.forEach((layer) => {
@@ -53,13 +62,47 @@ const getPreferredTheme = () => {
   return savedTheme === "dark" ? "dark" : "light";
 };
 
-if (themeToggle) {
-  applyTheme(getPreferredTheme());
+const closeMobileMenu = () => {
+  if (!menuToggle || !mobileMenu) {
+    return;
+  }
 
+  mobileMenu.classList.remove("is-open");
+  menuToggle.classList.remove("is-active");
+  menuToggle.setAttribute("aria-expanded", "false");
+};
+
+applyTheme(getPreferredTheme());
+
+themeToggles.forEach((themeToggle) => {
   themeToggle.addEventListener("click", () => {
     const nextTheme = document.body.classList.contains("dark-theme") ? "light" : "dark";
     applyTheme(nextTheme);
     window.localStorage.setItem(themeStorageKey, nextTheme);
+  });
+});
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("is-open");
+    menuToggle.classList.toggle("is-active", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!topbar || !topbar.contains(event.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) {
+      closeMobileMenu();
+    }
   });
 }
 

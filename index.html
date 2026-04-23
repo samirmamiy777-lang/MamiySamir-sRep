@@ -30,6 +30,19 @@
           </span>
         </a>
 
+        <button
+          type="button"
+          class="mobile-menu-toggle"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Открыть меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         <nav class="nav">
           <a href="#products">Продукция</a>
           <a href="#advantages">Преимущества</a>
@@ -38,7 +51,7 @@
         </nav>
 
         <div class="topbar-actions">
-          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+          <button type="button" class="theme-toggle" data-theme-toggle aria-label="Переключить тему">
             <span class="theme-toggle-track">
               <span class="theme-toggle-label theme-toggle-light">Светлая</span>
               <span class="theme-toggle-label theme-toggle-dark">Тёмная</span>
@@ -46,7 +59,18 @@
             </span>
           </button>
           <a href="mailto:info@wintersmazki.ru" class="button button-ghost">info@wintersmazki.ru</a>
-          <a href="./contacts.html" class="button button-primary">Связаться с нами</a>
+          <a href="./contacts.html" class="button button-primary">Связаться</a>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+          <a href="mailto:info@wintersmazki.ru" class="button button-ghost button-block">info@wintersmazki.ru</a>
+          <button type="button" class="theme-toggle theme-toggle-mobile" data-theme-toggle aria-label="Переключить тему">
+            <span class="theme-toggle-track">
+              <span class="theme-toggle-label theme-toggle-light">Светлая</span>
+              <span class="theme-toggle-label theme-toggle-dark">Тёмная</span>
+              <span class="theme-toggle-thumb"></span>
+            </span>
+          </button>
         </div>
       </header>
 
@@ -61,7 +85,7 @@
               стабильность, ресурс узлов и профессиональный результат.
             </p>
             <div class="hero-actions">
-              <a href="./contacts.html" class="button button-primary">Связаться с нами</a>
+              <a href="./contacts.html" class="button button-primary">Связаться</a>
             </div>
             <div class="hero-metrics">
               <article>
@@ -223,7 +247,7 @@
         </div>
         <div>
           <a href="tel:+79628708218">+7 962 870-82-18</a>
-          <a href="mailto:info@masla-smazki.ru">info@masla-smazki.ru</a>
+          <a href="mailto:info@wintersmazki.ru">info@wintersmazki.ru</a>
           <span>Юр. адрес: 000000, г. Москва, ул. Примерная, д. 1, офис 1</span>
         </div>
         <div>
