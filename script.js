@@ -106,5 +106,81 @@ if (menuToggle && mobileMenu) {
   });
 }
 
+const accordionRoots = document.querySelectorAll("[data-accordion]");
+
+const closeAccordionItem = (item) => {
+  const trigger = item.querySelector(".faq-trigger");
+  const content = item.querySelector(".faq-answer-wrap");
+
+  if (!content) {
+    return;
+  }
+
+  const currentHeight = content.scrollHeight;
+  content.style.height = `${currentHeight}px`;
+  content.offsetHeight;
+
+  item.classList.remove("is-open");
+  trigger?.setAttribute("aria-expanded", "false");
+  content.style.height = "0px";
+  content.style.opacity = "0";
+  content.style.transform = "translateY(-8px)";
+};
+
+const openAccordionItem = (item) => {
+  const trigger = item.querySelector(".faq-trigger");
+  const content = item.querySelector(".faq-answer-wrap");
+
+  if (!content) {
+    return;
+  }
+
+  item.classList.add("is-open");
+  trigger?.setAttribute("aria-expanded", "true");
+  content.style.height = "0px";
+  content.style.opacity = "1";
+  content.style.transform = "translateY(0)";
+  content.offsetHeight;
+  content.style.height = `${content.scrollHeight}px`;
+};
+
+accordionRoots.forEach((root) => {
+  const items = root.querySelectorAll(".faq-item");
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger");
+    const content = item.querySelector(".faq-answer-wrap");
+
+    item.classList.remove("is-open");
+    trigger?.setAttribute("aria-expanded", "false");
+
+    if (content) {
+      content.style.height = "0px";
+      content.style.opacity = "0";
+      content.style.transform = "translateY(-8px)";
+    }
+  });
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger");
+
+    trigger?.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+
+      items.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains("is-open")) {
+          closeAccordionItem(otherItem);
+        }
+      });
+
+      if (isOpen) {
+        closeAccordionItem(item);
+      } else {
+        openAccordionItem(item);
+      }
+    });
+  });
+});
+
 handleScroll();
 window.addEventListener("scroll", handleScroll, { passive: true });
